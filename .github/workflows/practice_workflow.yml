@@ -24,6 +24,15 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - uses: trstringer/manual-approval@v1
+        with:
+          secret: ${{ github.TOKEN }}
+          approvers: ahmedtariqdatics
+          minimum-approvals: 1
+          message: "Please approve this PR"
+          title: "Manual Approval Required"
+          timeout-minutes: 5
+
       - name: Checkout
         uses: actions/checkout@v2
       - name: Run a one-line script
