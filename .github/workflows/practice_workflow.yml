@@ -24,17 +24,9 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: trstringer/manual-approval@v1
-        with:
-          secret: ${{ github.TOKEN }}
-          approvers: ahmedtariqdatics
-          minimum-approvals: 1
-          issue-body: "Please approve this PR"
-          issue-title: "Manual Approval Required"
-          timeout-minutes: 5
-
       - name: Checkout
         uses: actions/checkout@v2
+    
       - name: Run a one-line script
         run: echo "Exiting with code 1"
         shell: bash
@@ -44,8 +36,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Dump GitHub context"
-        run: echo '${{ toJson(github.event) }}' | jq
+        run: echo '${{ toJson(github.event) }}'
         shell: bash
 
 
 
+
+    # steps:
+    #   - uses: trstringer/manual-approval@v1
+    #     with:
+    #       secret: ${{ github.TOKEN }}
+    #       approvers: ahmedtariqdatics
+    #       minimum-approvals: 1
+    #       issue-body: "Please approve this PR"
+    #       issue-title: "Manual Approval Required"
