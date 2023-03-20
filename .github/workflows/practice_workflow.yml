@@ -27,5 +27,13 @@ jobs:
         run: echo "Exiting with code 1"
         shell: bash
 
+  view:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Dump GitHub context"
+        run: echo '${{ toJson(github.event) }}' | jq
+        shell: bash
+
 
 
